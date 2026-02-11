@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Ceylisse Lanka</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { DEFAULT: '#D4AF37', 50: '#FCFBF5', 100: '#F9F7EB', 200: '#F0EBD7', 300: '#E7DFC3', 400: '#D4AF37', 500: '#B59428', 600: '#96791E', 700: '#786016', 800: '#5C4810', 900: '#42330B' },
+                        black: { DEFAULT: '#000000', 900: '#121212', 800: '#1E1E1E' }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-white dark:bg-black-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <div id="navbar-container"></div>
+
+    <main class="min-h-screen pt-24 pb-12 px-4 md:px-8 max-w-7xl mx-auto">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-serif mb-4">Our <span class="text-gold-400">Collection</span></h1>
+            <p class="text-gray-500 max-w-2xl mx-auto">Explore our premium range of cosmetics designed to enhance your
+                natural beauty.</p>
+        </header>
+
+        <div class="flex flex-col md:flex-row gap-8">
+            <!-- Sidebar / Filters -->
+            <aside class="w-full md:w-64 flex-shrink-0">
+                <div class="bg-gray-50 dark:bg-black-800 p-6 rounded-sm sticky top-24">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-serif text-xl font-semibold">Filters</h3>
+                        <button class="text-sm text-gold-400 hover:text-gold-500">Reset</button>
+                    </div>
+
+                    <!-- Search -->
+                    <div class="mb-6">
+                        <div class="relative">
+                            <input type="text" placeholder="Search products..."
+                                class="w-full bg-white dark:bg-black-900 border border-gray-200 dark:border-gray-700 px-4 py-2 pl-10 focus:outline-none focus:border-gold-400">
+                            <i data-lucide="search" class="w-4 h-4 absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="mb-6">
+                        <h4 class="font-medium mb-3">Categories</h4>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li>
+                                <label class="flex items-center gap-2 cursor-pointer hover:text-gold-400">
+                                    <input type="checkbox" class="accent-gold-400"> All Products
+                                </label>
+                            </li>
+                            <li>
+                                <label class="flex items-center gap-2 cursor-pointer hover:text-gold-400">
+                                    <input type="checkbox" class="accent-gold-400"> Skin Care
+                                </label>
+                            </li>
+                            <li>
+                                <label class="flex items-center gap-2 cursor-pointer hover:text-gold-400">
+                                    <input type="checkbox" class="accent-gold-400"> Makeup
+                                </label>
+                            </li>
+                            <li>
+                                <label class="flex items-center gap-2 cursor-pointer hover:text-gold-400">
+                                    <input type="checkbox" class="accent-gold-400"> Fragrances
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Product Grid -->
+            <div class="flex-1">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="text-sm text-gray-500">Showing 0 products</span>
+                    <select class="bg-transparent border-none text-sm focus:ring-0 cursor-pointer">
+                        <option>Sort by: Newest</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                    </select>
+                </div>
+
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Products will be injected here via JS -->
+                    <!-- Placeholder -->
+                    <div class="group relative">
+                        <div class="aspect-square bg-gray-100 dark:bg-black-800 overflow-hidden relative">
+                            <!-- Image -->
+                            <div class="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400">Image
+                            </div>
+                            <!-- Overlay Actions -->
+                            <div
+                                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                                <button class="bg-white text-black p-3 rounded-full hover:bg-gold-400 transition-colors"
+                                    title="Add to Cart">
+                                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                                </button>
+                                <button class="bg-white text-black p-3 rounded-full hover:bg-gold-400 transition-colors"
+                                    title="Quick View">
+                                    <i data-lucide="eye" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <h3 class="text-lg font-serif">Product Name</h3>
+                            <p class="text-gold-400 font-medium">LKR 5,000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+    <script src="assets/js/firebase-config.js" type="module"></script>
+    <script src="assets/js/main.js" type="module"></script>
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

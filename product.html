@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Ceylisse Lanka</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { DEFAULT: '#D4AF37', 50: '#FCFBF5', 100: '#F9F7EB', 200: '#F0EBD7', 300: '#E7DFC3', 400: '#D4AF37', 500: '#B59428', 600: '#96791E', 700: '#786016', 800: '#5C4810', 900: '#42330B' },
+                        black: { DEFAULT: '#000000', 900: '#121212', 800: '#1E1E1E' }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-gray-50 dark:bg-black-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <div id="navbar-container"></div>
+
+    <main class="min-h-screen pt-24 pb-12 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- Product Image -->
+            <div class="relative group">
+                <div
+                    class="aspect-square bg-gray-200 dark:bg-black-800 rounded-sm overflow-hidden flex items-center justify-center">
+                    <span class="text-gray-400">High Quality Image</span>
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div>
+                <span class="text-gold-400 text-sm font-medium uppercase tracking-wider mb-2 block">Skin Care</span>
+                <h1 class="text-4xl font-serif font-bold mb-4">Golden Radiance Serum</h1>
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="text-2xl font-serif text-gold-400">LKR 8,500</span>
+                    <span class="text-sm text-green-500 bg-green-100 px-2 py-1 rounded">In Stock</span>
+                </div>
+
+                <p class="text-gray-500 leading-relaxed mb-8">
+                    Infused with 24k gold particles and rare botanical extracts, this serum rejuvenates your skin,
+                    leaving it glowing and youthful. A touch of luxury for your daily routine.
+                </p>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="flex items-center border border-gray-300 dark:border-gray-700">
+                        <button class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-black-800">-</button>
+                        <input type="number" value="1" min="1"
+                            class="w-12 text-center bg-transparent focus:outline-none" readonly>
+                        <button class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-black-800">+</button>
+                    </div>
+                    <button
+                        class="flex-1 bg-gold-400 text-black font-semibold py-3 px-8 hover:bg-white hover:text-gold-400 border border-gold-400 transition-colors uppercase tracking-widest flex items-center justify-center gap-2">
+                        <i data-lucide="shopping-bag" class="w-5 h-5"></i> Add to Cart
+                    </button>
+                </div>
+
+                <!-- Details Accordion (Placeholder) -->
+                <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+                    <button class="flex justify-between w-full py-2 hover:text-gold-400">
+                        <span class="font-medium">Ingredients</span>
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                    </button>
+                    <button
+                        class="flex justify-between w-full py-2 hover:text-gold-400 border-t border-gray-200 dark:border-gray-700 mt-2 pt-2">
+                        <span class="font-medium">How to Use</span>
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+    <script src="assets/js/firebase-config.js" type="module"></script>
+    <script src="assets/js/main.js" type="module"></script>
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

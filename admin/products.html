@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Ceylisse Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { DEFAULT: '#D4AF37', 50: '#FCFBF5', 100: '#F9F7EB', 200: '#F0EBD7', 300: '#E7DFC3', 400: '#D4AF37', 500: '#B59428', 600: '#96791E', 700: '#786016', 800: '#5C4810', 900: '#42330B' },
+                        black: { DEFAULT: '#000000', 900: '#121212', 800: '#1E1E1E' }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-gray-100 dark:bg-black-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-black-900 text-white flex-shrink-0 hidden md:flex flex-col">
+            <div class="h-16 flex items-center justify-center border-b border-gray-800">
+                <span class="text-xl font-serif font-bold text-gold-400">Ceylisse Admin</span>
+            </div>
+
+            <nav class="flex-1 px-4 py-8 space-y-2">
+                <a href="index.html"
+                    class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Dashboard
+                </a>
+                <a href="products.html"
+                    class="flex items-center gap-3 px-4 py-3 bg-gold-400/10 text-gold-400 rounded-lg">
+                    <i data-lucide="package" class="w-5 h-5"></i> Products
+                </a>
+                <a href="orders.html"
+                    class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors">
+                    <i data-lucide="shopping-cart" class="w-5 h-5"></i> Orders
+                </a>
+                <a href="users.html"
+                    class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors">
+                    <i data-lucide="users" class="w-5 h-5"></i> Users
+                </a>
+            </nav>
+
+            <div class="p-4 border-t border-gray-800">
+                <button class="flex items-center gap-3 text-gray-400 hover:text-red-400 transition-colors">
+                    <i data-lucide="log-out" class="w-5 h-5"></i> Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-y-auto relative">
+            <!-- Header -->
+            <header
+                class="h-16 bg-white dark:bg-black-800 shadow-sm flex items-center justify-between px-8 sticky top-0 z-10">
+                <h2 class="text-xl font-semibold">Products Management</h2>
+                <button id="open-add-modal"
+                    class="bg-gold-400 text-black px-4 py-2 rounded font-semibold hover:bg-gold-500 transition-colors flex items-center gap-2">
+                    <i data-lucide="plus" class="w-4 h-4"></i> Add Product
+                </button>
+            </header>
+
+            <!-- Content -->
+            <main class="p-8">
+                <div class="bg-white dark:bg-black-800 rounded-lg shadow-sm overflow-hidden">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                            <tr>
+                                <th class="py-4 px-6 font-semibold text-gray-600 dark:text-gray-300">Product</th>
+                                <th class="py-4 px-6 font-semibold text-gray-600 dark:text-gray-300">Category</th>
+                                <th class="py-4 px-6 font-semibold text-gray-600 dark:text-gray-300">Price (LKR)</th>
+                                <th class="py-4 px-6 font-semibold text-gray-600 dark:text-gray-300">Status</th>
+                                <th class="py-4 px-6 font-semibold text-gray-600 dark:text-gray-300 text-right">Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-list">
+                            <!-- JS will inject rows here -->
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black/50 z-40 hidden backdrop-blur-sm"></div>
+
+    <!-- Add Product Modal -->
+    <div id="add-product-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden pointer-events-none">
+        <div
+            class="bg-white dark:bg-black-800 rounded-lg shadow-xl w-full max-w-lg overflow-hidden pointer-events-auto transform transition-all scale-100">
+            <div
+                class="p-6 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-gray-800">
+                <h3 class="text-lg font-serif font-bold">Add New Product</h3>
+                <button id="close-modal" class="text-gray-400 hover:text-red-500">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <form id="product-form" class="p-6 space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Product Name</label>
+                    <input type="text" id="product-name" required
+                        class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:border-gold-400 bg-transparent">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Price (LKR)</label>
+                        <input type="number" id="product-price" required min="0"
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:border-gold-400 bg-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Category</label>
+                        <select id="product-category"
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:border-gold-400 bg-transparent">
+                            <option value="Skin Care">Skin Care</option>
+                            <option value="Makeup">Makeup</option>
+                            <option value="Fragrances">Fragrances</option>
+                            <option value="Bath & Body">Bath & Body</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">Description</label>
+                    <textarea id="product-description" rows="3"
+                        class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:border-gold-400 bg-transparent"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">Product Image</label>
+                    <input type="file" id="product-image" accept="image/*"
+                        class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-gold-400/10 file:text-gold-400 hover:file:bg-gold-400/20 cursor-pointer">
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-gold-400 text-black font-bold py-3 rounded hover:bg-gold-500 transition-colors mt-2">
+                    Save Product
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase Config -->
+    <script type="module" src="../assets/js/firebase-config.js"></script>
+    <script type="module" src="../assets/js/admin-products.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

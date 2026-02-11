@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Ceylisse Lanka</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { DEFAULT: '#D4AF37', 50: '#FCFBF5', 100: '#F9F7EB', 200: '#F0EBD7', 300: '#E7DFC3', 400: '#D4AF37', 500: '#B59428', 600: '#96791E', 700: '#786016', 800: '#5C4810', 900: '#42330B' },
+                        black: { DEFAULT: '#000000', 900: '#121212', 800: '#1E1E1E' }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-gray-100 dark:bg-black-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-black-900 text-white flex-shrink-0 hidden md:flex flex-col">
+            <div class="h-16 flex items-center justify-center border-b border-gray-800">
+                <span class="text-xl font-serif font-bold text-gold-400">Ceylisse Admin</span>
+            </div>
+
+            <nav class="flex-1 px-4 py-8 space-y-2">
+                <a href="index.html" class="flex items-center gap-3 px-4 py-3 bg-gold-400/10 text-gold-400 rounded-lg">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Dashboard
+                </a>
+                <a href="products.html"
+                    class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors">
+                    <i data-lucide="package" class="w-5 h-5"></i> Products
+                </a>
+                <a href="orders.html"
+                    class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors">
+                    <i data-lucide="shopping-cart" class="w-5 h-5"></i> Orders
+                </a>
+                <a href="users.html"
+                    class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors">
+                    <i data-lucide="users" class="w-5 h-5"></i> Users
+                </a>
+            </nav>
+
+            <div class="p-4 border-t border-gray-800">
+                <button class="flex items-center gap-3 text-gray-400 hover:text-red-400 transition-colors">
+                    <i data-lucide="log-out" class="w-5 h-5"></i> Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-y-auto">
+            <!-- Topbar -->
+            <header class="h-16 bg-white dark:bg-black-800 shadow-sm flex items-center justify-between px-8">
+                <h2 class="text-xl font-semibold">Dashboard Overview</h2>
+                <div class="flex items-center gap-4">
+                    <span class="text-sm text-gray-500">Admin User</span>
+                    <div class="w-8 h-8 rounded-full bg-gold-400 flex items-center justify-center text-black font-bold">
+                        A</div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <main class="p-8">
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <!-- Stat Card -->
+                    <div class="bg-white dark:bg-black-800 p-6 rounded-lg shadow-sm border-l-4 border-gold-400">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Total Sales</p>
+                                <h3 class="text-2xl font-bold">LKR 0</h3>
+                            </div>
+                            <div class="p-2 bg-gold-400/10 rounded-full text-gold-400">
+                                <i data-lucide="dollar-sign" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-black-800 p-6 rounded-lg shadow-sm border-l-4 border-blue-500">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Total Orders</p>
+                                <h3 class="text-2xl font-bold">0</h3>
+                            </div>
+                            <div class="p-2 bg-blue-500/10 rounded-full text-blue-500">
+                                <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders Table Placeholder -->
+                <div class="bg-white dark:bg-black-800 rounded-lg shadow-sm overflow-hidden">
+                    <div class="p-6 border-b border-gray-100 dark:border-gray-700">
+                        <h3 class="font-semibold text-lg">Recent Orders</h3>
+                    </div>
+                    <div class="p-6 text-center text-gray-500 py-12">
+                        No orders yet.
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Firebase Config -->
+    <script type="module" src="../assets/js/firebase-config.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

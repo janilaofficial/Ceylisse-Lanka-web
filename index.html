@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceylisse Lanka | Luxury in Every Touch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { DEFAULT: '#D4AF37', 50: '#FCFBF5', 100: '#F9F7EB', 200: '#F0EBD7', 300: '#E7DFC3', 400: '#D4AF37', 500: '#B59428', 600: '#96791E', 700: '#786016', 800: '#5C4810', 900: '#42330B' },
+                        black: { DEFAULT: '#000000', 900: '#121212', 800: '#1E1E1E' }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white dark:bg-black-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <div id="navbar-container"></div>
+    <main class="min-h-screen pt-20">
+        <section class="relative h-[80vh] flex items-center justify-center overflow-hidden bg-black">
+            <div class="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-800 to-black z-0 opacity-80"></div>
+            <div class="relative z-20 text-center px-4">
+                <h1 class="text-5xl md:text-7xl font-serif text-white mb-6 animate-fade-in-up">
+                    <span class="text-gold-400">Luxury</span> in Every Touch...
+                </h1>
+                <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto font-light">Experience the finest premium cosmetics crafted for elegance and perfection.</p>
+                <a href="shop.html" class="inline-block bg-gold-400 text-black font-semibold px-8 py-4 rounded-none hover:bg-white transition-all duration-300 uppercase tracking-widest border border-gold-400">Discover Collection</a>
+            </div>
+        </section>
+        <section class="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+            <h2 class="text-4xl font-serif text-center mb-12"><span class="text-gold-400">Popular</span> Collections</h2>
+            <div id="popular-products" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+        </section>
+    </main>
+    <div id="footer-container"></div>
+    <script src="assets/js/firebase-config.js" type="module"></script>
+    <script src="assets/js/main.js" type="module"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
